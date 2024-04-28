@@ -89,8 +89,9 @@ def test_get_gists():
     gists = response.json()
     assert isinstance(gists, list)
 
-          How To Use:
-
++--------------------------------------------------------------------+
++---                      How to use it                           ---+
++--------------------------------------------------------------------+
 1. Set Up Virtual Environment (Optional but Recommended)
 
 $ python3 -m venv venv
