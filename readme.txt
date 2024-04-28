@@ -1,13 +1,12 @@
-# equal-experts-offline-task
+                equal-experts-offline-task
 
-
-
-## Description:
+                      Description:
 
 This solution includes a Dockerfile, Python code, and a requirements.txt file.
 
-## Dockerfile
-
++--------------------------------------------------------------------+
++---                      Dockerfile                              ---+
++--------------------------------------------------------------------+
 FROM python:3.9-slim
 
 WORKDIR .
@@ -19,64 +18,44 @@ COPY . .
 
 CMD ["python", "api.py"]
 
--------------------------------------------
++--------------------------------------------------------------------+
+
 requirements.in:
 
 flask
-
 requests
-
 werkzeug
-
 pytest
 
-------------------------------------------
-```bash
++--------------------------------------------------------------------+
+
 $ pip-compile requirements.in
-```
+  It created the following requirements.txt:
+
 attrs==23.2.0
-
 blinker==1.7.0
-
 certifi==2024.2.2
-
 charset-normalizer==3.3.2
-
 click==8.1.7
-
 flask==3.0.3
-
 idna==3.7
-
 iniconfig==2.0.0
-
 itsdangerous==2.2.0
-
 jinja2==3.1.3
-
 markupsafe==2.1.5
-
 packaging==24.0
-
 pluggy==1.5.0
-
 py==1.11.0
-
 pytest==6.2.5
-
 requests==2.31.0
-
 toml==0.10.2
-
 urllib3==2.2.1
-
 werkzeug==3.0.2
 
--------------------------------------------------
-### Python Code (api.py):
++--------------------------------------------------------------------+
++---                Python Code  (api.py)                         ---+
++--------------------------------------------------------------------+
 
-// api.py:
-```python
 import requests
 from flask import Flask, jsonify, request
 
@@ -98,13 +77,10 @@ def get_gists():
 if __name__ == '__main__':
     # Run the Flask app on port 8080
     app.run(debug=True, host='0.0.0.0', port=8080)
-```
-------------------------------------------------
 
-### Test Code (test_api.py):
-
-// test_api.py:
-```python
++--------------------------------------------------------------------+
++---                Python Code  (test_api.py)                    ---+
++--------------------------------------------------------------------+
 import requests
 
 def test_get_gists():
@@ -112,40 +88,40 @@ def test_get_gists():
     assert response.status_code == 200
     gists = response.json()
     assert isinstance(gists, list)
-```    
 
-## How To Use It:
+          How To Use:
 
 1. Set Up Virtual Environment (Optional but Recommended)
-```bash
+
 $ python3 -m venv venv
 $ source venv/bin/activate
-```
+
 2. Clone the Repository
-```bash
+
 $ git clone https://github.com/sandorvas/equal-experts-offline-task.git 
 $ cd equal-experts-offline-task
- ```
+
 3. Install Dependencies
-```bash
+
 $ pip install -r requirements.txt
-```
+
 4. Build Docker Image
-```bash
+
 $ docker build -t ee-task-image .
-```
+
 5. Create Docker Container
-```bash
+
 $ docker run -d -p 8080:8080 --name ee-task-container ee-task-image
-```
+
 6. Run Tests with pytest
-```bash
+
 $ pytest
-```
+
 7. Check Docker Logs
-```bash
+
 $ docker logs ee-task-container
-```
+
 8. Access the Application
 
 Open a web browser and navigate to http://localhost:8080/gists to access the application.
+
